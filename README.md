@@ -1,7 +1,12 @@
 # View Cookies
 
-View Cookies is a Firefox extensions to show all cookies belonging to the current page.
+View Cookies is a Pale Moon extensions to show all cookies belonging to the current page.
 
-See [View Cookies](http://www.bitstorm.org/extensions/view-cookies/) for more information.
+#### Supports
+ * Pale Moon [25.0a1pre - 28.*]
 
-Edwin Martin <edwin@bitstorm.org>
+## Building
+Simply download the contents of the repository and pack the src folder into a .zip file. Then, rename the file to .xpi and drag into the browser.
+
+## Download
+You can grab the latest release from the [Official Web Site](//realityripple.com/Software/Mozilla-Extensions/View-Cookies/).
