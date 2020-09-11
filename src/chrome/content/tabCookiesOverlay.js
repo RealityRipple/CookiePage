@@ -1,8 +1,7 @@
 // Copyright 2004 - 2015 Edwin Martin
 // This code is triple licensed under MPL/GPL/LGPL. See license.txt for details.
 
-// Java-like namespace: prefixed with reverse domain name
-var orgBitstormViewCookies = (function() {
+var CookiePage = (function() {
 	var treeView = {
 		data: [],
 		rowCount: 0,
@@ -50,7 +49,7 @@ var orgBitstormViewCookies = (function() {
 	
 	function onLoad() {
 		var cookie, expires;
-		var cookieTree = document.getElementById("viewcookies-tab-tree");
+		var cookieTree = document.getElementById("cookiepage-tab-tree");
 		cookieTree.view = treeView;
 		treeView.setColumns( ["cookie-name", "cookie-value", "cookie-domain", "cookie-path", "cookie-expires", "cookie-secure"] );
 		var cookieManager = Components.classes["@mozilla.org/cookiemanager;1"].getService(Components.interfaces.nsICookieManager);
@@ -98,10 +97,8 @@ var orgBitstormViewCookies = (function() {
 		var cookieManager = Components.classes["@mozilla.org/cookiemanager;1"].getService(Components.interfaces.nsICookieManager);
 		cookieManager.remove( treeView.getCellText(selectedIndex, "cookie-domain"), treeView.getCellText(selectedIndex, "cookie-name"), treeView.getCellText(selectedIndex, "cookie-path"), false );
 		onLoad();
-		// Selecting a row as below doesn't make it the selected color (blue), but
-		// lightgrey, which is hard to differentiate. So I don't do this.
-		//	if (selectedIndex < treeView.data.length)
-		//		treeView.selection.select(selectedIndex);
+		if (selectedIndex < treeView.data.length)
+			treeView.selection.select(selectedIndex);
 	}
 	
 	function deleteAllCookiesFromList() {
@@ -119,10 +116,10 @@ var orgBitstormViewCookies = (function() {
 	}
 	
 	function setDetail( name, value, expires, path, secure ) {
-		document.getElementById("viewcookies-tab-name").value = name;
-		document.getElementById("viewcookies-tab-value").value = value;
-		document.getElementById("viewcookies-tab-path").value = path;
-		document.getElementById("viewcookies-tab-expires").value = expires + (secure=="Yes"?" (secure cookie)":"");
+		document.getElementById("cookiepage-tab-name").value = name;
+		document.getElementById("cookiepage-tab-value").value = value;
+		document.getElementById("cookiepage-tab-path").value = path;
+		document.getElementById("cookiepage-tab-expires").value = expires + (secure=="Yes"?" (secure cookie)":"");
 	}
 	
 	function endsWith(t, s) {

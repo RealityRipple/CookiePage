@@ -1,12 +1,9 @@
 <?xml version="1.0"?>
-
-<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"	xmlns:em="http://www.mozilla.org/2004/em-rdf#">
 	<Description about="urn:mozilla:install-manifest">
-		<em:id>{CBBAC537-42C6-5F91-B887-6E336F3CDD24}</em:id>
-		<em:name>View Cookies</em:name>
-		<em:version>1.14</em:version>
+		<em:id>{72C55DF0-B26D-5729-B12A-6699D074D036}</em:id>
+		<em:name>CookiePage</em:name>
+		<em:version>1.15</em:version>
 		<em:description>View cookies of the current web page.</em:description>
 		<em:type>2</em:type>
 		<em:creator>RealityRipple</em:creator>
@@ -14,10 +11,9 @@
 		<em:contributor>Jolie van der Klis</em:contributor>
 		<em:contributor>Philip Chee</em:contributor>
 		<em:contributor>Wladimir Palant</em:contributor>
-		<em:homepageURL>https://realityripple.com/Software/Mozilla-Extensions/View-Cookies/</em:homepageURL>
-		<em:updateURL>https://realityripple.com/Software/Mozilla-Extensions/View-Cookies/update.rdf</em:updateURL>
-		<em:iconURL>chrome://viewcookies/skin/viewcookies-small.png</em:iconURL>
-
+		<em:homepageURL>https://realityripple.com/Software/Mozilla-Extensions/CookiePage/</em:homepageURL>
+		<em:updateURL>https://realityripple.com/Software/Mozilla-Extensions/CookiePage/update.rdf</em:updateURL>
+		<em:iconURL>chrome://cookiepage/skin/cookiepage-small.png</em:iconURL>
 		<em:targetApplication>
 			<Description>
 				<em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>

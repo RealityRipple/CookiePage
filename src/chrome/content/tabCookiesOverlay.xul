@@ -3,24 +3,24 @@
 <!-- Copyright 2004 - 2015 Edwin Martin edwin@bitstorm.org -->
 <!-- This code is triple licensed under MPL/GPL/LGPL. See license.txt for details. -->
 
-<?xml-stylesheet href="chrome://viewcookies/skin/viewcookies.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cookiepage/skin/cookiepage.css" type="text/css"?>
 
 <overlay id="pageInfoCookieOverlay" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-  <script type="application/x-javascript" src="chrome://viewcookies/content/tabCookiesOverlay.js"/>
+  <script type="application/x-javascript" src="chrome://cookiepage/content/tabCookiesOverlay.js"/>
   <script type="application/x-javascript">
   <![CDATA[
     /* Register for pageInfo onload calls */
-    onLoadRegistry.push(orgBitstormViewCookies.onLoad);
+    onLoadRegistry.push(CookiePage.onLoad);
   ]]>
   </script>
 
   <tabs id="tabs">
     <tab id="cookieInfoTab" label="Cookies"
          accesskey="C"
-         oncommand="ensureSelection(orgBitstormViewCookies.treeView);"
-         onselect="ensureSelection(orgBitstormViewCookies.treeView);"/>
+         oncommand="ensureSelection(CookiePage.treeView);"
+         onselect="ensureSelection(CookiePage.treeView);"/>
   </tabs>
   
   <radiogroup id="viewGroup">
@@ -41,7 +41,7 @@
   <vbox id="cookieInfoPanel">
     <description class="header">Cookies on this page</description>
   
-	  <tree id="viewcookies-tab-tree" seltype="single" flex="1" onselect="orgBitstormViewCookies.itemSelected()">
+	  <tree id="cookiepage-tab-tree" seltype="single" flex="1" onselect="CookiePage.itemSelected()">
 		<treecols>
 		  <treecol id="cookie-name" label="Name" flex="2" minwidth="50"/>
 		  <splitter class="tree-splitter"/>
@@ -69,26 +69,26 @@
 		  <rows>
 			<row>
 			  <description>Name:</description>
-			  <textbox id="viewcookies-tab-name" readonly="true"/>
+			  <textbox id="cookiepage-tab-name" readonly="true"/>
 			</row>
 			<row>
 			  <description>Value:</description>
-			  <textbox id="viewcookies-tab-value" readonly="true"/>
+			  <textbox id="cookiepage-tab-value" readonly="true"/>
 			</row>
 			<row>
 			  <description>Domain/Path:</description>
-			  <textbox id="viewcookies-tab-path" readonly="true"/>
+			  <textbox id="cookiepage-tab-path" readonly="true"/>
 			</row>
 			<row>
 			  <description>Expires:</description>
-			  <textbox id="viewcookies-tab-expires" readonly="true"/>
+			  <textbox id="cookiepage-tab-expires" readonly="true"/>
 			</row>
 		  </rows>
 		</grid>
 	  </groupbox>
 	  <hbox>
-		<button label="Remove cookie" oncommand="orgBitstormViewCookies.deleteCookie()" id="remove"/>
-		<button label="Remove all cookies in this list" oncommand="orgBitstormViewCookies.deleteAllCookiesFromList()" id="removeAll"/>
+		<button label="Remove cookie" oncommand="CookiePage.deleteCookie()" id="remove"/>
+		<button label="Remove all cookies in this list" oncommand="CookiePage.deleteAllCookiesFromList()" id="removeAll"/>
 	  </hbox>
   
   </vbox>
