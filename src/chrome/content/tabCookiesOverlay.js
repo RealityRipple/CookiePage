@@ -64,8 +64,8 @@ var CookiePage = (function() {
 			cookie = iter.getNext();
 			dotDomain = '.'+domain;
 			if ( cookie instanceof Components.interfaces.nsICookie && endsWith( dotDomain, cookie.host ) && beginsWith( path, cookie.path ) ) {
-				if ( cookie.expires==0 ) {
-					expires = "Session"
+				if ( cookie.expires === 0 ) {
+					expires = "Session";
 				} else {
 					var d = new Date( cookie.expires*1000 );
 					expires = d.toLocaleString();
@@ -77,7 +77,7 @@ var CookiePage = (function() {
 	
 		setDetail( "", "", "", "", "" );
 		document.getElementById("remove").disabled = true;
-		document.getElementById("removeAll").disabled = treeView.rowCount == 0;
+		document.getElementById("removeAll").disabled = treeView.rowCount === 0;
 	//	if (cookies.length > 0)
 	//		treeView.selection.select(0);
 	}
@@ -119,19 +119,19 @@ var CookiePage = (function() {
 		document.getElementById("cookiepage-tab-name").value = name;
 		document.getElementById("cookiepage-tab-value").value = value;
 		document.getElementById("cookiepage-tab-path").value = path;
-		document.getElementById("cookiepage-tab-expires").value = expires + (secure=="Yes"?" (secure cookie)":"");
+		document.getElementById("cookiepage-tab-expires").value = expires + (secure==="Yes"?" (secure cookie)":"");
 	}
 	
 	function endsWith(t, s) {
 		if ( t.length < s.length )
 			return false;
-		return t.substr( t.length-s.length ) == s;
+		return t.substr( t.length-s.length ) === s;
 	}
 	
 	function beginsWith(t, s) {
 		if ( t.length < s.length )
 			return false;
-		return t.substr( 0, s.length ) == s;
+		return t.substr( 0, s.length ) === s;
 	}
 
 	function getUri() {
