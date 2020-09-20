@@ -1,5 +1,5 @@
-content	cookiepage	      chrome/content/
-locale		cookiepage	en-US	chrome/locale/en-US/
-skin	   cookiepage	skin	 chrome/skin/
-overlay	chrome://browser/content/pageInfo.xul	         chrome://cookiepage/content/tabCookiesOverlay.xul
-overlay	chrome://browser/content/pageinfo/pageInfo.xul	chrome://cookiepage/content/tabCookiesOverlay.xul
+content cookiepage       chrome/content/
+locale  cookiepage en-US chrome/locale/en-US/
+skin    cookiepage skin  chrome/skin/
+overlay chrome://browser/content/pageInfo.xul          chrome://cookiepage/content/tabCookiesOverlay.xul
+overlay chrome://browser/content/pageinfo/pageInfo.xul chrome://cookiepage/content/tabCookiesOverlay.xul
