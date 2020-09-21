@@ -13,7 +13,7 @@ var CookiePage = (function() {
     this.tree.view.selection.clearSelection();
    this.tree.rowCountChanged(this.rowCount - 1, -this.rowCount);
    this.data = rows;
-   this.rowCount = rows.length - 1;
+   this.rowCount = rows.length;
    this.tree.rowCountChanged(0, this.rowCount);
   },
   setColumns: function(cols)
@@ -76,7 +76,19 @@ var CookiePage = (function() {
   let cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
   let cookies = [];
   let uri = getUri();
-  let domain = uri.host;
+  let domain = null;
+  try
+  {
+   domain = uri.host;
+  }
+  catch(e){}
+  if (domain === null)
+  {
+   setDetail('', '', '', '', '');
+   document.getElementById('remove').disabled = true;
+   document.getElementById('removeAll').disabled = true;
+   return;
+  }
   let path = uri.path;
   let iter = cookieManager.enumerator;
   while (iter.hasMoreElements())
