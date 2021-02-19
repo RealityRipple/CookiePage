@@ -18,7 +18,7 @@ var CookiePage = (function() {
   },
   setColumns: function(cols)
   {
-   for (let i = 0; i < cols.length; i++)
+   for (var i = 0; i < cols.length; i++)
    {
     this.cols[cols[i]] = i;
    }
@@ -31,7 +31,7 @@ var CookiePage = (function() {
   {
    if (this.data.length <= row)
     return null;
-   let col = -1;
+   var col = -1;
    if (typeof column === 'string')
    {
     if (this.cols.hasOwnProperty(column))
@@ -70,13 +70,13 @@ var CookiePage = (function() {
  };
  function onLoad()
  {
-  let cookieTree = document.getElementById('cookiepage-tab-tree');
+  var cookieTree = document.getElementById('cookiepage-tab-tree');
   cookieTree.view = treeView;
   treeView.setColumns(['cookie-name', 'cookie-value', 'cookie-domain', 'cookie-path', 'cookie-expires', 'cookie-secure']);
-  let cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
-  let cookies = [];
-  let uri = getUri();
-  let domain = null;
+  var cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
+  var cookies = [];
+  var uri = getUri();
+  var domain = null;
   try
   {
    domain = uri.host;
@@ -89,18 +89,18 @@ var CookiePage = (function() {
    document.getElementById('removeAll').disabled = true;
    return;
   }
-  let path = uri.path;
-  let iter = cookieManager.enumerator;
+  var path = uri.path;
+  var iter = cookieManager.enumerator;
   while (iter.hasMoreElements())
   {
-   let cookie = iter.getNext();
-   let dotDomain = '.' + domain;
+   var cookie = iter.getNext();
+   var dotDomain = '.' + domain;
    if (cookie instanceof Components.interfaces.nsICookie && endsWith(dotDomain, cookie.host) && beginsWith(path, cookie.path))
    {
-    let expires = 'Session';
+    var expires = 'Session';
     if (cookie.expires !== 0)
     {
-     let d = new Date(cookie.expires * 1000);
+     var d = new Date(cookie.expires * 1000);
      expires = d.toLocaleString();
     }
     cookies.push([cookie.name, cookie.value, cookie.host, cookie.path, expires, cookie.isSecure ? 'Yes' : 'No', cookie.originAttributes]);
@@ -113,7 +113,7 @@ var CookiePage = (function() {
  }
  function itemSelected()
  {
-  let selectedIndex = treeView.selection.currentIndex;
+  var selectedIndex = treeView.selection.currentIndex;
   setDetail(treeView.getCellText(selectedIndex, 'cookie-name'),
             treeView.getCellText(selectedIndex, 'cookie-value'),
             treeView.getCellText(selectedIndex, 'cookie-expires'),
@@ -123,8 +123,8 @@ var CookiePage = (function() {
  }
  function deleteCookie()
  {
-  let selectedIndex = treeView.selection.currentIndex;
-  let cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
+  var selectedIndex = treeView.selection.currentIndex;
+  var cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
   cookieManager.remove(treeView.getCellText(selectedIndex, 'cookie-domain'), treeView.getCellText(selectedIndex, 'cookie-name'), treeView.getCellText(selectedIndex, 'cookie-path'), false, treeView.data[selectedIndex][6]);
   onLoad();
   if (selectedIndex < treeView.data.length)
@@ -134,8 +134,8 @@ var CookiePage = (function() {
  }
  function deleteAllCookiesFromList()
  {
-  let cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
-  for (let i = 0; i < treeView.rowCount; i++)
+  var cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
+  for (var i = 0; i < treeView.rowCount; i++)
   {
    cookieManager.remove(treeView.getCellText(i, 'cookie-domain'), treeView.getCellText(i, 'cookie-name'), treeView.getCellText(i, 'cookie-path'), false, treeView.data[i][6]);
   }
@@ -143,7 +143,7 @@ var CookiePage = (function() {
  }
  function deleteAllCookies()
  {
-  let cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
+  var cookieManager = Components.classes['@mozilla.org/cookiemanager;1'].getService(Components.interfaces.nsICookieManager);
   cookieManager.removeAll();
   onLoad();
  }
@@ -168,9 +168,9 @@ var CookiePage = (function() {
  }
  function getUri()
  {
-  let windowsService = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
-  let currentWindow = windowsService.getMostRecentWindow('navigator:browser');
-  let browser = currentWindow.getBrowser();
+  var windowsService = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
+  var currentWindow = windowsService.getMostRecentWindow('navigator:browser');
+  var browser = currentWindow.getBrowser();
   return browser.currentURI;
  }
 })();
