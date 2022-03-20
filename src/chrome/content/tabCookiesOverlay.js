@@ -149,8 +149,9 @@ var CookiePage = (function() {
  }
  function setDetail(name, value, expires, path, secure)
  {
-  document.getElementById('cookiepage-tab-name').value = name;
-  document.getElementById('cookiepage-tab-value').value = value;
+  document.getElementById('cookiepage-tab-name').value = readableValue(name);
+  document.getElementById('cookiepage-tab-value').value = readableValue(value);
+  document.getElementById('cookiepage-tab-value').setAttribute('tooltiptext', value);
   document.getElementById('cookiepage-tab-path').value = path;
   document.getElementById('cookiepage-tab-expires').value = expires + (secure==='Yes' ? ' (secure cookie)' : '');
  }
@@ -165,6 +166,84 @@ var CookiePage = (function() {
   if (t.length < s.length)
    return false;
   return t.substr(0, s.length) === s;
+ }
+ function readableValue(value)
+ {
+  var splitReg = new RegExp('((?:[^a-zA-Z0-9%+/=]+)?)([a-zA-Z0-9%+/=]+)((?:[^a-zA-Z0-9%+/=]+)?)', 'g');
+  var e;
+  var list = value.matchAll(splitReg);
+  var ret = '';
+  for (e of list)
+  {
+   var pre = e[1];
+   var txt = e[2];
+   var post = e[3];
+   txt = cleanValue(txt);
+   if (txt !== e[2])
+    txt = readableValue(txt);
+   ret += pre + txt + post;
+  }
+  return ret;
+ }
+ function cleanValue(value)
+ {
+  var uriReg = new RegExp('%[0-9A-Fa-f]{2}', '');
+  var decReg = new RegExp('^[0-9]+$', '');
+  var hexReg = new RegExp('^([0-9A-Fa-f]{2})+$', '');
+  var b64Reg = new RegExp('^[A-Za-z0-9+/=]+$', '');
+  if (uriReg.test(value))
+   return cleanValue(decodeURIComponent(value));
+  if (decReg.test(value))
+   return value;
+  if (hexReg.test(value))
+  {
+   var hexStr = '';
+   for (var i = 0; i < value.length; i+= 2)
+   {
+    var chr = parseInt(value.substr(i, 2), 16);
+    if (chr < 32 || chr > 126)
+    {
+     hexStr = false;
+     break;
+    }
+    hexStr += String.fromCharCode(chr);
+   }
+   if (hexStr !== false)
+    return cleanValue(hexStr);
+  }
+  if (b64Reg.test(value))
+  {
+   var rawStr = false;
+   try
+   {
+    rawStr = atob(value);
+   }
+   catch (ex)
+   {
+    rawStr = false;
+   }
+   if (rawStr !== false)
+   {
+    var testB = btoa(rawStr);
+    var len = testB.length;
+    if (testB.includes('='))
+     len = testB.indexOf('=');
+    if (value.slice(0, len) === testB.slice(0, len))
+    {
+     for (c in rawStr)
+     {
+      if (rawStr.charCodeAt(c) < 32 || rawStr.charCodeAt(c) > 126)
+      {
+       rawStr = false;
+       break;
+      }
+     }
+     if (rawStr !== false)
+      return cleanValue(rawStr);
+    }
+   }
+  }
+  return value;
  }
  function getUri()
  {
