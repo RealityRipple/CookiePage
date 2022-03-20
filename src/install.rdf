@@ -3,31 +3,14 @@
  <Description about="urn:mozilla:install-manifest">
   <em:id>{72C55DF0-B26D-5729-B12A-6699D074D036}</em:id>
   <em:name>CookiePage</em:name>
-  <em:version>2.1</em:version>
+  <em:version>30.0</em:version>
   <em:description>View cookies of the current web page.</em:description>
   <em:type>2</em:type>
-  <!-- Firefox -->
   <em:targetApplication>
    <Description>
     <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-    <em:minVersion>1.5</em:minVersion>
-    <em:maxVersion>50.*</em:maxVersion>
-   </Description>
-  </em:targetApplication>
-  <!-- SeaMonkey -->
-  <em:targetApplication>
-   <Description>
-    <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
-    <em:minVersion>2.0a1</em:minVersion>
-    <em:maxVersion>2.*</em:maxVersion>
-   </Description>
-  </em:targetApplication>
-  <!-- Pale Moon -->
-  <em:targetApplication>
-   <Description>
-    <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
-    <em:minVersion>25.0a1pre</em:minVersion>
-    <em:maxVersion>29.*</em:maxVersion>
+    <em:minVersion>30.0</em:minVersion>
+    <em:maxVersion>30.*</em:maxVersion>
    </Description>
   </em:targetApplication>
   <em:creator>RealityRipple</em:creator>
@@ -35,8 +18,8 @@
   <em:contributor>Jolie van der Klis</em:contributor>
   <em:contributor>Philip Chee</em:contributor>
   <em:contributor>Wladimir Palant</em:contributor>
-  <em:homepageURL>https://realityripple.com/Software/Mozilla-Extensions/CookiePage/</em:homepageURL>
-  <em:updateURL>https://realityripple.com/Software/Mozilla-Extensions/CookiePage/update.rdf</em:updateURL>
+  <em:homepageURL>https://realityripple.com/Software/XUL/CookiePage/</em:homepageURL>
+  <em:updateURL>https://realityripple.com/Software/XUL/CookiePage/update.rdf</em:updateURL>
   <em:iconURL>chrome://cookiepage/skin/cookiepage-small.png</em:iconURL>
  </Description>
 </RDF>
