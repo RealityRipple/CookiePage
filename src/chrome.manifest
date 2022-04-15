@@ -1,5 +1,5 @@
 content cookiepage       chrome/content/
 locale  cookiepage en-US chrome/locale/en-US/
 skin    cookiepage skin  chrome/skin/
-overlay chrome://browser/content/pageInfo.xul            chrome://cookiepage/content/tabCookiesOverlay.xul application={ec8030f7-c20a-464f-9b0e-13a3a9e97384}
-overlay chrome://browser/content/pageinfo/pageInfo.xul   chrome://cookiepage/content/tabCookiesOverlay.xul application={ec8030f7-c20a-464f-9b0e-13a3a9e97384}
+overlay chrome://browser/content/pageInfo.xul            chrome://cookiepage/content/tabCookiesOverlay.xul
+overlay chrome://browser/content/pageinfo/pageInfo.xul   chrome://cookiepage/content/tabCookiesOverlay.xul
