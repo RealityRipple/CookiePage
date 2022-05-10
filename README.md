@@ -3,7 +3,7 @@
 CookiePage is a Pale Moon extensions to show all cookies belonging to the current page.
 
 #### Supports
- * Pale Moon [30.0 - 30.*]
+ * Pale Moon [31.0 - 31.*]
 
 ## Building
 Simply download the contents of the repository and pack the src folder into a .zip file. Then, rename the file to .xpi and drag into the browser.
